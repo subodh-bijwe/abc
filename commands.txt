@@ -1,0 +1,17 @@
+
+######## server starting
+
+gunicorn -w 1 -k uvicorn.workers.UvicornWorker --env environment=${environment} main:app -b 0.0.0.0:8006
+
+######## docker
+
+sudo docker build -f Dockerfile . -t para
+sudo docker run -it -d -p 6969:6969 para
+sudo docker stats
+sudo docker logs <id>
+
+
+######## testing 
+
+coverage run -m pytest -s
+coverage report -m
